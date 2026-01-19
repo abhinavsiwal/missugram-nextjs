@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   "Personal posts and tributes",
@@ -14,16 +15,28 @@ export default function CoreFeatures() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-16">
            
-           {/* Visual Side (Abstract/Glass) */}
-           <div className="flex-1 w-full relative h-[400px] bg-gradient-to-tr from-blue-100 to-violet-100 rounded-[3rem] overflow-hidden flex items-center justify-center">
-              <div className="absolute inset-0 bg-white/30 backdrop-blur-3xl" />
-              {/* Abstract Circles */}
-              <div className="w-64 h-64 bg-primary/10 rounded-full blur-3xl absolute top-10 left-10 animate-pulse-slow" />
-              <div className="w-64 h-64 bg-violet-400/10 rounded-full blur-3xl absolute bottom-10 right-10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
+           {/* Visual Side (App Preview) */}
+           <div className="flex-1 w-full relative h-[500px] bg-gray-100 rounded-[3rem] overflow-hidden flex items-end justify-center group shadow-2xl">
+               {/* Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-violet-100" />
               
-              <div className="relative z-10 text-center space-y-2">
-                 <p className="font-heading text-6xl font-bold text-primary/20">FEATURES</p>
-                 <p className="font-heading text-6xl font-bold text-primary/20">CORE</p>
+              {/* Pattern */}
+              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(#1E88E5_1px,transparent_1px)] [background-size:20px_20px]" />
+
+              {/* Main Image */}
+              <div className="relative z-10 w-[80%] transition-transform duration-700 hover:-translate-y-4">
+                 <Image 
+                   src="/Missugram Profile Image.png" 
+                   alt="Miss U Gram Profile Interface" 
+                   width={400} 
+                   height={800} 
+                   className="w-full h-auto drop-shadow-2xl"
+                 />
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute top-10 right-10 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-white/50 text-xs font-bold text-gray-600 animate-float-delayed">
+                 ✨ Profile View
               </div>
            </div>
 
