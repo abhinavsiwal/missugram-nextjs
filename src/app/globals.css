@@ -5,8 +5,13 @@
 
 :root {
   /* Brand Colors */
-  --color-primary: #1E88E5;   /* Vibrant Blue from Logo */
+  --color-primary: #2669fe;   /* Updated Brand Blue */
   --color-secondary: #000000; /* Pure Black from Logo */
+
+  /* Blue Palette Override to match Brand */
+  --color-blue-500: #4d82fe;
+  --color-blue-600: #2669fe;
+  --color-blue-700: #1b4dcf;
 
   /* Backgrounds */
   --color-background: #F8F9FA; /* Soft White */
@@ -60,6 +65,11 @@
   --color-background: var(--color-background);
   --color-surface: var(--color-surface);
   --color-border: var(--color-border);
+
+  /* Blue Overrides */
+  --color-blue-500: var(--color-blue-500);
+  --color-blue-600: var(--color-blue-600);
+  --color-blue-700: var(--color-blue-700);
 
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
