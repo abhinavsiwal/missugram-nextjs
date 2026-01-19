@@ -11,8 +11,8 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-      <div className="pointer-events-auto relative flex items-center justify-between w-full max-w-5xl px-3 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-white/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)] ring-1 ring-white/60 transition-all hover:shadow-[0_8px_40px_rgba(30,136,229,0.12)] hover:bg-white/80">
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      <div className="pointer-events-auto relative flex items-center justify-between w-full max-w-5xl px-3 py-2.5 rounded-full bg-white/90 backdrop-blur-xl border border-white/60 shadow-[0_4px_30px_rgba(0,0,0,0.08)] ring-1 ring-white/60 transition-all hover:shadow-[0_8px_40px_rgba(30,136,229,0.12)] hover:bg-white/95">
         
         {/* Logo Section */}
         <Link href="/" className="flex items-center gap-3 pl-3 group">
