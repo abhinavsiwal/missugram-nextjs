@@ -1,11 +1,21 @@
 import Hero from "@/components/home/Hero";
-import Features from "@/components/home/Features";
+import Description from "@/components/home/Description";
+import HowItWorks from "@/components/home/HowItWorks";
+import TargetAudience from "@/components/home/TargetAudience";
+import CoreFeatures from "@/components/home/CoreFeatures";
+import EmotionalStory from "@/components/home/EmotionalStory";
+import DownloadCTA from "@/components/home/DownloadCTA";
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col min-h-screen">
       <Hero />
-      <Features />
+      <Description />
+      <HowItWorks />
+      <TargetAudience />
+      <CoreFeatures />
+      <EmotionalStory />
+      <DownloadCTA />
     </main>
   );
 }
