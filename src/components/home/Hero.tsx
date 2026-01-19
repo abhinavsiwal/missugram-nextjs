@@ -1,97 +1,114 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Download } from "lucide-react";
+import { Download, Play, ChevronRight, Apple } from "lucide-react";
+import { VideoModal } from "@/components/ui/video-modal";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 md:pt-0">
-      {/* Background Gradients */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-200/20 rounded-full blur-[120px]" />
+    <section className="relative w-full h-[100dvh] flex flex-col items-center justify-start pt-28 md:pt-32 overflow-hidden bg-white">
+      
+      {/* 1. ATMOSPHERE & LIGHTING */}
+      <div className="absolute inset-0 pointer-events-none">
+         {/* The "Digital Horizon" - Grounding Glow */}
+         <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[120vw] h-[50vh] bg-[radial-gradient(ellipse_at_top,rgba(30,136,229,0.15)_0%,transparent_70%)] blur-[100px]" />
+         
+         {/* Top Light */}
+         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] bg-[radial-gradient(ellipse_at_bottom,rgba(99,102,241,0.05)_0%,transparent_70%)] blur-[80px]" />
+         
+         {/* Subtle Grid Floor */}
+         <div className="absolute bottom-0 w-full h-[40vh] opacity-[0.4] bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:linear-gradient(to_bottom,transparent,black)] pointer-events-none" 
+              style={{ transform: 'perspective(1000px) rotateX(60deg) scale(1.5)' }}
+         />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12 md:gap-20">
-        {/* Text Content */}
-        <div className="flex-1 flex flex-col gap-6 md:gap-8 text-center md:text-left z-10">
-          <div className="inline-flex items-center gap-2 self-center md:self-start bg-white/50 backdrop-blur-sm border border-blue-100 px-4 py-1.5 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-primary text-sm font-medium tracking-wide font-body">
-              Now Available on iOS & Android
-            </span>
-          </div>
+      <div className="container relative z-10 px-4 flex flex-col items-center h-full">
+        
+        {/* 2. TEXT CONTENT (TOP SECTION) */}
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center space-y-6 animate-fade-in-up">
+           
+           {/* New Version Badge */}
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 shadow-sm backdrop-blur-sm transition-transform hover:scale-105 cursor-default">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              <span className="text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-widest">v2.0 Now Available</span>
+           </div>
 
-          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-secondary">
-            Transforming Memories into <br className="hidden md:block" />
-            <span className="text-primary">Digital Legacies.</span>
-          </h1>
+           {/* Cinematic Headline */}
+           <h1 className="font-heading text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 leading-[0.95]">
+             Where <br className="md:hidden" />
+             <span className="text-transparent bg-clip-text bg-gradient-to-b from-blue-600 to-violet-600">
+               Memories
+             </span>{" "}
+             Live On.
+           </h1>
 
-          <p className="font-body text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto md:mx-0">
-            A safe, healing space to honor, share, and remember your loved ones. 
-            Create a timeless tribute and keep their spirit alive forever, completely free.
-          </p>
+           {/* Subheading */}
+           <p className="font-body text-base sm:text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+             A timeless sanctuary to honor loved ones, share stories, and heal together. 
+             <span className="hidden sm:inline"> Built for privacy, connection, and emotional well-being.</span>
+           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start pt-4">
-            <button className="group w-full sm:w-auto bg-primary text-white font-body px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2">
-              <Download size={20} />
-              <span>Download App</span>
-            </button>
-            <Link
-              href="#about"
-              className="group w-full sm:w-auto bg-white text-secondary border border-border font-body px-8 py-4 rounded-full text-base font-semibold hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
-            >
-              <span>Learn More</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
 
-          {/* Trust/Social Proof */}
-          <div className="pt-8 flex items-center justify-center md:justify-start gap-4">
-             <div className="flex -space-x-3">
-               {[1, 2, 3, 4].map((i) => (
-                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 relative overflow-hidden">
-                    {/* Placeholder for user avatars */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-white" />
-                 </div>
-               ))}
-             </div>
-             <p className="font-body text-sm font-medium text-gray-500">
-               Trusted by <span className="text-secondary font-bold">10,000+</span> families
-             </p>
-          </div>
+
+           {/* CTAs */}
+           <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 w-full sm:w-auto">
+              <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-body px-8 py-3.5 rounded-full text-sm font-bold shadow-lg shadow-gray-900/20 hover:bg-black hover:scale-105 transition-all duration-300">
+                <Apple className="w-4 h-4 mb-0.5" />
+                <span>One-Click Install</span>
+              </button>
+
+              <VideoModal videoId="NxYLnEQTk74">
+                <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-200 font-body px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 shadow-sm cursor-pointer">
+                    Watch the Film
+                    <Play className="w-3 h-3 fill-current ml-0.5" />
+                </button>
+              </VideoModal>
+           </div>
         </div>
 
-        {/* Visual Content (Right Side) */}
-        <div className="flex-1 w-full max-w-[500px] md:max-w-none relative z-10">
-          <div className="relative aspect-[4/5] md:aspect-square w-full">
-            {/* Main Phone/App Mockup Placeholder */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-white rounded-[2rem] shadow-2xl border border-white/50 overflow-hidden flex items-center justify-center group">
-               <div className="absolute inset-2 border border-dashed border-gray-300 rounded-[1.8rem]" />
-               <div className="text-center p-8">
-                  <div className="w-20 h-20 bg-blue-50 rounded-2xl mx-auto mb-4 flex items-center justify-center text-primary">
-                    <span className="font-heading font-bold text-3xl">M</span>
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold text-secondary mb-2">App Interface</h3>
-                  <p className="text-gray-500 font-body text-sm">
-                    Interactive Preview Coming Soon
-                  </p>
-                  
-                  {/* Floating Elements Animation */}
-                  <div className="absolute top-10 right-10 w-16 h-16 bg-white rounded-xl shadow-lg rotate-12 animate-bounce delay-75 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-20 left-10 w-12 h-12 bg-blue-500/10 rounded-full shadow-sm -rotate-6 animate-pulse md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
-               </div>
+        {/* 3. THE RISING ARTIFACT (BOTTOM SECTION) */}
+        <div className="flex-1 w-full flex items-end justify-center relative mt-8 lg:mt-12">
+            
+            {/* Main Phone Image */}
+            <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[500px] z-20">
                
-               {/* Use the actual image if suitable, else keep placeholder design */}
-              <Image
-                src="/missugram-hero.webp"
-                alt="App Interface Preview"
-                fill
-                className="object-cover opacity-90 hover:scale-105 transition-transform duration-700"
-                priority
-              />
+               {/* Reflection/Shadow Base */}
+               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[20px] bg-black/20 blur-xl rounded-[100%]" />
+
+               <Image
+                 src="/missugram-hero.png"
+                 alt="Miss U Gram App Interface"
+                 width={500}
+                 height={1000}
+                 className="w-full h-auto object-contain drop-shadow-2xl animate-float-delayed"
+                 priority
+               />
+
+               {/* Floating Glass Widgets (Parallax effect) */}
+               <div className="absolute top-[30%] -left-4 sm:-left-12 p-3 bg-white/70 backdrop-blur-xl border border-white/50 rounded-2xl shadow-xl animate-float hidden md:block">
+                  <div className="flex items-center gap-3">
+                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center text-xl">🕊️</div>
+                     <div>
+                        <div className="text-xs font-bold text-gray-800">In Loving Memory</div>
+                        <div className="text-[10px] text-gray-500">Shared just now</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div className="absolute top-[50%] -right-4 sm:-right-16 p-3 bg-white/70 backdrop-blur-xl border border-white/50 rounded-2xl shadow-xl animate-float-delayed hidden md:block" style={{ animationDelay: '1s' }}>
+                  <div className="flex items-center gap-2">
+                     <div className="flex -space-x-2">
+                        {[1,2,3].map(i => <div key={i} className="w-6 h-6 rounded-full bg-gray-200 border border-white" />)}
+                     </div>
+                     <span className="text-[10px] font-bold text-gray-600 pl-1">Generic Family</span>
+                  </div>
+               </div>
+
             </div>
-          </div>
         </div>
+
       </div>
     </section>
   );
